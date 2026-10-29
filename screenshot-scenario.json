@@ -1,0 +1,79 @@
+{
+  "notes": "tapFrac is the real centre of a real rect, converted with the two constants this template forces. The CanvasScaler is Expand at 1242x2688, so on the 1080x2400 capture device the logical canvas is 1242x2760, and under each canvas an AspectRatioFitter pins the panel space back to 1242x2688 centred, i.e. letterboxed by 36 logical units top and bottom. Hence fracX = x_in_panel / 1242 and fracY = (36 + y_from_panel_top) / 2760. Every step changes the screen; no two frames show the same thing.",
+  "steps": [
+    {
+      "waitLoader": true,
+      "shot": "01_Home"
+    },
+    {
+      "tapFrac": [
+        0.25,
+        0.836
+      ],
+      "label": "THE CLUB",
+      "wait": 2.5,
+      "shot": "02_Club",
+      "derivation": "HomeView secondary row: anchor TopCentre, pos (-311, -2271) -> x 310, yTop 2271"
+    },
+    {
+      "tapFrac": [
+        0.5,
+        0.77
+      ],
+      "label": "WEEK MAP (club footer)",
+      "wait": 2.5,
+      "shot": "03_WeekMap",
+      "derivation": "ClubRosterView sheet centre yTop 1330, button local y -760 -> yTop 2090"
+    },
+    {
+      "tapFrac": [
+        0.5,
+        0.749
+      ],
+      "label": "START SESSION (map footer)",
+      "waitLoader": true,
+      "shot": "04_Session_board",
+      "derivation": "WeekPreviewView sheet centre yTop 1330, button local y -700 -> yTop 2030"
+    },
+    {
+      "tapFrac": [
+        0.5,
+        0.506
+      ],
+      "label": "task board",
+      "wait": 16,
+      "shot": "05_Task_running",
+      "derivation": "SessionDirector board sheet: anchor TopCentre, pos (0, -1360) -> yTop 1360"
+    },
+    {
+      "tapFrac": [
+        0.91,
+        0.086
+      ],
+      "label": "PAUSE",
+      "wait": 2.0,
+      "shot": "06_Pause",
+      "derivation": "SessionHud glyph button: anchor TopRight, pos (-112, -200) -> x 1130, yTop 200"
+    },
+    {
+      "tapFrac": [
+        0.5,
+        0.601
+      ],
+      "label": "RESUME",
+      "wait": 30,
+      "shot": "07_Week_map",
+      "derivation": "pop card 1020x1240 at panel centre +40 -> card bottom yTop 1924; button BottomCentre +300 -> yTop 1624. The 30s wait is measured from RESUME, and the session clock was frozen by the pause, so it lands on the map phase (session 48-78s) whatever the scene load and the settle poll cost before it."
+    },
+    {
+      "tapFrac": [
+        0.5,
+        0.451
+      ],
+      "label": "frontier lantern (middle of the map)",
+      "wait": 7,
+      "shot": "08_Result",
+      "derivation": "WeekMapView grid middle cell sits at board local y +150 -> yTop 1210. WeekMapModel.IsPlayable guarantees that cell is always a frontier cell, i.e. always a legal move, so this tap always lights a lantern and raises the result pop."
+    }
+  ]
+}
